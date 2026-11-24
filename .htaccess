@@ -1,0 +1,46 @@
+# Apache rules for Bliss Park. PHP's built-in server ignores this file.
+# The PHP pages also send headers from includes/security.php. This file covers
+# static HTML, and it blocks files that must never be downloaded.
+
+DirectoryIndex homepage.php
+Options -Indexes
+ServerSignature Off
+
+# Keep old bookmarks working while sending every public page through PHP.
+# PHP emits the per-request CSP and the other response headers in security.php.
+# The legacy .html URLs remain compatibility targets;
+# they are never the displayed application pages on Apache.
+RewriteEngine On
+RewriteRule ^homepage\.html$ homepage.php [R=302,L]
+RewriteRule ^about\.html$ about.php [R=302,L]
+RewriteRule ^room\.html$ room.php [R=302,L]
+RewriteRule ^services\.html$ services.php [R=302,L]
+RewriteRule ^(header|adminheader)\.html$ homepage.php [R=302,L]
+RewriteRule ^login\.html$ login.php [R=302,L]
+RewriteRule ^register\.html$ register.php [R=302,L]
+RewriteRule ^contact\.html$ contact.php [R=302,L]
+RewriteRule ^bookingpage\.html$ booking.php [R=302,L]
+RewriteRule ^payment[[:space:]]details\.html$ booking.php [R=302,L]
+
+<FilesMatch "(?i)^(\.env|\.user\.ini|php\.ini)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(?i)\.(sql|log|md)$">
+    Require all denied
+</FilesMatch>
+
+RewriteRule ^storage/ - [F,L]
+RewriteRule ^includes/ - [F,L]
+
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "DENY"
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    # PHP applies the CSP to every rendered application page. Do not add a
+    # second Apache CSP here: browsers enforce both policies together, which
+    # could silently block the reviewed Bootstrap CDN allowed by PHP's policy.
+    # HSTS stays off until every host is HTTPS:
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>

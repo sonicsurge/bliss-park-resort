@@ -1,0 +1,179 @@
+:root {
+    --primary-color: #2c3e50; /* Deep Navy/Charcoal */
+    --secondary-color: #c2a679; /* Warm Gold */
+    --accent-color: #d3cec3; /* Soft Beige */
+    --background-color: #f8f8f8; /* Off-White */
+    --food-package-bg: #fdfaf5; /* Very light cream for food package bg */
+    --food-package-border: #eee5d5; /* Light border for food package */
+}
+
+body {
+    /* Use Montserrat for body text, Playfair for headings if desired */
+    font-family: 'Montserrat', sans-serif; /* Changed default font */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    line-height: 1.6;
+}
+
+.room-types-container {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.room-types {
+    background-color: #fff;
+    padding: 40px; /* Adjusted padding */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.room-types h2 {
+    font-family: 'Playfair Display', serif; /* Use Playfair for main heading */
+    color: var(--primary-color);
+    font-size: 2.5em;
+    font-weight: 600; /* Adjusted from default */
+    margin-bottom: 15px; /* Reduced margin */
+    text-align: center;
+}
+
+/* Changed selector from .room-types p to target only the intro paragraph */
+.room-types > p {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 800px; /* Constrain width */
+    margin-left: auto; /* Center */
+    margin-right: auto; /* Center */
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.room-item {
+    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    background-color: #fff;
+    display: flex; /* Use flexbox for vertical alignment */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.room-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.room-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    /* border-bottom: 1px solid #eee; */ /* Removed border, handled by container */
+}
+
+.room-item h3 {
+    font-family: 'Playfair Display', serif; /* Use Playfair for room titles */
+    margin: 20px 15px 5px 15px; /* Adjusted margins */
+    color: var(--primary-color);
+    font-size: 1.4em; /* Slightly larger */
+    font-weight: 500;
+}
+
+/* Target the price specifically */
+.room-item .room-price {
+    color: var(--secondary-color);
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0 15px 15px 15px; /* Adjusted margins */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for price */
+}
+
+/* --- NEW Food Package Styles --- */
+.food-package {
+    background-color: var(--food-package-bg);
+    border-top: 1px solid var(--food-package-border);
+    padding: 15px;
+    margin-top: auto; /* Pushes package to bottom if card height varies */
+    text-align: left;
+    font-size: 0.9em; /* Slightly smaller font for details */
+}
+
+.food-package h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* Bold title */
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.1em; /* Relative to parent .food-package font-size */
+}
+
+.food-package ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #555; /* Slightly lighter text for items */
+}
+
+.food-package li {
+    margin-bottom: 6px;
+    padding-left: 20px; /* Space for icon */
+    position: relative;
+}
+
+.food-package li::before {
+    content: '✓'; /* Checkmark */
+    position: absolute;
+    left: 0;
+    top: 1px; /* Adjust vertical alignment */
+    color: var(--secondary-color); /* Use gold color for checkmark */
+    font-weight: bold;
+    font-size: 1.1em;
+}
+/* --- End Food Package Styles --- */
+
+/* Ensure script errors don't break layout */
+#header-container:empty {
+    min-height: 50px; /* Example minimum height */
+    background-color: #eee; /* Placeholder background */
+}
+.book-now-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    max-width: 150px; /* Adjust this value as needed */
+    margin: 15px auto 20px auto; /* Center the button */
+    text-align: center; /* Ensure text is centered inside button */
+}
+
+.book-now-button:hover {
+    background-color: #b19362;
+    color: #000; /* Darker gold on hover */
+}
+
+/* Ensure the button is properly aligned */
+.room-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space evenly */
+    text-align: center; /* Center the button horizontally */
+}
+
+/* Add some padding to the room item to improve spacing */
+.room-item {
+    padding-bottom: 20px; /* Add padding at the bottom */
+}

@@ -1,0 +1,23 @@
+# Secrets and runtime data.
+.env
+storage/logs/*.log
+storage/ratelimit/*.json
+
+# Local build output and operating-system clutter.
+tmp/
+output/
+tools/__pycache__/
+desktop.ini
+.DS_Store
+.idea/
+.vscode/
+
+# Private presentation material and legacy static copies.
+OWASP-Top-10-Security-Guide.pdf
+PRESENTATION-CHECKLIST.md
+PRESENTATION-SEED.sql
+README-SECURITY.md
+SECURITY-REVIEW.md
+tools/build_presentation.mjs
+tools/build_security_guide.py
+*.html

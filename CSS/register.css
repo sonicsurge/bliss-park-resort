@@ -1,0 +1,105 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #c2a679;
+    --accent-color: #d3cec3;
+    --background-color: #f8f8f8;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.registration-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px; /* Increased border-radius */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+.form-error {
+    background: #fdecea;
+    color: #7a1f1f;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 0 0 16px;
+    font-size: 0.9em;
+}
+
+.registration-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: calc(100% - 30px);
+    padding: 10px 10px 10px 30px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px; /* Increased border-radius */
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -10px;
+    left: 25px;
+    font-size: 0.8em;
+    color: var(--secondary-color);
+    background-color: white;
+    padding: 0 5px;
+}
+
+.input-group input:focus {
+    border-color: var(--secondary-color);
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 8px; /* Increased border-radius */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #b19362;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #aaa;
+}
+
+@media (max-width: 400px) {
+    .registration-container {
+        width: 90%;
+    }
+}

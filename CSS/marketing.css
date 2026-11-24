@@ -1,0 +1,147 @@
+/*
+ * Shared presentation for the public PHP pages.
+ *
+ * There is no JavaScript in this stylesheet or in the pages that use it.
+ * The public navigation is rendered by PHP, so a visitor never fetches a
+ * second HTML document and injects it with innerHTML. This keeps the page
+ * compatible with the strict Content-Security-Policy in security.php.
+ */
+:root {
+    --ink: #243746;
+    --gold: #a58e65;
+    --gold-dark: #806b46;
+    --surface: #ffffff;
+    --canvas: #f7f5f1;
+    --muted: #5c6670;
+}
+
+body {
+    background: var(--canvas);
+    color: var(--ink);
+}
+
+.marketing-main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0 3rem;
+}
+
+.hero-copy h1,
+.section-heading h1,
+.section-heading h2,
+.feature-card h2,
+.room-card h2,
+.service-card h2 {
+    color: var(--ink);
+    font-family: Georgia, serif;
+}
+
+.hero-copy h1,
+.section-heading h1 {
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    line-height: 1.08;
+    margin: 0 0 1rem;
+}
+
+.hero-copy p,
+.section-heading p {
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    max-width: 62ch;
+}
+
+.hero-image,
+.feature-image,
+.room-card img,
+.service-card img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.hero-image { min-height: 350px; }
+
+.primary-link,
+.room-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .75rem 1.1rem;
+    border-radius: .5rem;
+    background: var(--gold);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.primary-link:hover,
+.room-card a:hover { background: var(--gold-dark); color: #fff; }
+
+.feature-grid,
+.room-grid,
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.feature-card,
+.room-card,
+.service-card,
+.about-block {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid #e8e2d9;
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1.5rem rgba(36, 55, 70, .07);
+}
+
+.feature-card,
+.room-card,
+.service-card { padding: 1.25rem; }
+
+.feature-card h2,
+.room-card h2,
+.service-card h2 { font-size: 1.3rem; margin: 0 0 .5rem; }
+.feature-card p,
+.room-card p,
+.service-card p { color: var(--muted); line-height: 1.6; }
+
+.section-heading { max-width: 760px; margin: 2.75rem auto 0; text-align: center; }
+
+.about-block { display: grid; grid-template-columns: 1fr 1fr; margin-top: 1.5rem; }
+.about-copy { padding: clamp(1.5rem, 4vw, 3rem); }
+.about-copy p { color: var(--muted); line-height: 1.75; }
+.feature-image { height: 100%; min-height: 300px; }
+
+.room-card { display: flex; flex-direction: column; }
+.room-card img,
+.service-card img { height: 210px; margin: -1.25rem -1.25rem 1.25rem; width: calc(100% + 2.5rem); border-radius: 0; }
+.room-card ul { color: var(--muted); line-height: 1.6; padding-left: 1.2rem; }
+.room-card a { margin-top: auto; text-align: center; }
+
+.service-card { padding-bottom: 1.5rem; }
+.service-card img { height: 190px; }
+
+.site-footer { color: var(--muted); font-size: .9rem; text-align: center; padding: 1.25rem; }
+
+@media (max-width: 860px) {
+    .hero, .about-block { grid-template-columns: 1fr; }
+    .feature-grid, .room-grid, .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-image { min-height: 260px; }
+}
+
+@media (max-width: 560px) {
+    .feature-grid, .room-grid, .service-grid { grid-template-columns: 1fr; }
+    .marketing-main { padding: 1rem 1rem 2rem; }
+}
